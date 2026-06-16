@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourbook - Recap de Puro Concierto</title>
-    <!-- Fuentes tipográficas idénticas a la captura -->
+    <!-- Importación de las tipografías sugeridas desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
     <style>
         :root {
             --text-white: #FFFFFF;
-            --pink-magenta: #C2006B; /* Tono magenta exacto de Louis Tomlinson */
+            --pink-magenta: #C2006B;
             --overlay-dark: rgba(0, 0, 0, 0.3);
         }
 
@@ -28,7 +28,6 @@
             overflow-x: hidden;
         }
 
-        /* Contenedor con la imagen relativa louis1.jpg */
         .landing-container {
             position: relative;
             width: 100%;
@@ -40,7 +39,7 @@
             padding: 2.5rem 2rem 1.5rem 2rem;
         }
 
-        /* --- Encabezado: TOURBOOK --- */
+        /* --- Encabezado con Cinzel Decorative --- */
         header {
             text-align: center;
             width: 100%;
@@ -66,7 +65,7 @@
             margin-top: 0.2rem;
         }
 
-        /* --- Contenido Central (Distribución exacta de bloques) --- */
+        /* --- Contenido Central --- */
         .content-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -75,7 +74,7 @@
             margin-bottom: auto;
         }
 
-        /* Bloque Izquierdo Superior */
+        /* Texto manuscrito condensado con Amatic SC */
         .quote-left {
             font-family: 'Amatic SC', sans-serif;
             font-size: 2.6rem;
@@ -86,7 +85,6 @@
             margin-top: 1.5rem;
         }
 
-        /* Bloque Derecho Intermedio (Alineado a la derecha en pantallas grandes) */
         .artist-right {
             justify-self: end;
             text-align: right;
@@ -114,7 +112,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- Footer: Créditos y Código de Barras --- */
+        /* --- Footer --- */
         footer {
             display: flex;
             flex-direction: column;
@@ -133,7 +131,6 @@
             letter-spacing: 1px;
         }
 
-        /* Código de barras CSS idéntico a la posición de la revista */
         .barcode {
             display: flex;
             background-color: var(--text-white);
@@ -154,7 +151,7 @@
         .barcode span:nth-child(4n) { width: 2px; }
         .barcode span:last-child { margin-right: 0; }
 
-        /* --- Ajustes de Pantalla (Responsividad) --- */
+        /* --- Responsividad --- */
         @media (min-width: 768px) {
             .landing-container {
                 padding: 3rem 4rem 2rem 4rem;
@@ -180,7 +177,7 @@
             }
 
             .artist-right {
-                margin-top: 8rem; /* Baja el bloque derecho para encajar con el espacio de la foto */
+                margin-top: 8rem;
             }
 
             .artist-name {
