@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourbook - Recap de Puro Concierto</title>
+    <!-- Importación de las tipografías elegantes y cursivas desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
@@ -31,16 +32,20 @@
             position: relative;
             width: 100%;
             min-height: 100vh;
+            /* Fondo con ruta relativa exacta a louis1.jpg */
             background: linear-gradient(to bottom, var(--overlay-dark), rgba(0,0,0,0.5)), url('louis1.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             padding: 2.5rem 2rem 1.5rem 2rem;
+            cursor: pointer; /* Cambia el cursor a una mano para indicar que se puede hacer clic */
         }
 
+        /* --- Encabezado --- */
         header {
             text-align: center;
             width: 100%;
+            pointer-events: none; /* Evita que el texto interfiera con el clic del fondo */
         }
 
         .main-title {
@@ -63,12 +68,14 @@
             margin-top: 0.2rem;
         }
 
+        /* --- Contenido Central --- */
         .content-grid {
             display: grid;
             grid-template-columns: 1fr;
             width: 100%;
             margin-top: 1rem;
             margin-bottom: auto;
+            pointer-events: none; /* Evita que los bloques de texto interfieran con el clic */
         }
 
         .quote-left {
@@ -107,6 +114,7 @@
             letter-spacing: 1px;
         }
 
+        /* --- Reproductor de Música --- */
         .audio-player-container {
             display: flex;
             align-items: center;
@@ -118,8 +126,10 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             max-width: 360px;
             margin-top: 2rem;
+            pointer-events: auto; /* Permite usar los controles directamente si se desea */
         }
 
+        /* Miniatura del disco de vinilo */
         .vinyl-thumb {
             width: 50px;
             height: 50px;
@@ -129,6 +139,7 @@
             background-position: center;
             box-shadow: 0 0 10px rgba(0,0,0,0.5);
             animation: spin 4s linear infinite;
+            animation-play-state: paused; /* El disco inicia pausado y girará cuando suene la música */
         }
 
         audio {
@@ -141,6 +152,7 @@
             to { transform: rotate(360deg); }
         }
 
+        /* --- Footer --- */
         footer {
             display: flex;
             flex-direction: column;
@@ -149,6 +161,7 @@
             width: 100%;
             margin-top: 2rem;
             gap: 1rem;
+            pointer-events: none;
         }
 
         .credits-author {
@@ -178,6 +191,7 @@
         .barcode span:nth-child(4n) { width: 2px; }
         .barcode span:last-child { margin-right: 0; }
 
+        /* --- Responsividad --- */
         @media (min-width: 768px) {
             .landing-container {
                 padding: 3rem 4rem 2rem 4rem;
@@ -225,7 +239,8 @@
 </head>
 <body>
 
-    <main class="landing-container">
+    <!-- Contenedor principal con ID para detectar el clic en la foto de fondo -->
+    <main class="landing-container" id="bg-container">
         
         <header>
             <h1 class="main-title">Tourbook</h1>
@@ -245,9 +260,9 @@
 
         <footer>
             <div class="audio-player-container">
-                <div class="vinyl-thumb" title="Louis Tomlinson - Faith In The Future Picture Disc"></div>
-                <!-- Sintaxis estricta con prefijo de directorio actual ./ -->
-                <audio controls>
+                <!-- Miniatura con ID para controlar su animación mediante JavaScript -->
+                <div class="vinyl-thumb" id="vinyl-id" title="Louis Tomlinson - Faith In The Future Picture Disc"></div>
+                <audio controls id="audio-track">
                     <source src="./silvertongues.mp3" type="audio/mpeg">
                     Tu navegador no soporta el elemento de audio.
                 </audio>
@@ -266,6 +281,30 @@
         </footer>
 
     </main>
+
+    <!-- Script para activar la reproducción al hacer clic en el fondo -->
+    <script>
+        const background = document.getElementById('bg-container');
+        const audio = document.getElementById('audio-track');
+        const vinyl = document.getElementById('vinyl-id');
+
+        background.addEventListener('click', function(e) {
+            // Evita activar o pausar la música si haces clic directamente en los controles del reproductor
+            if (e.target.closest('.audio-player-container')) return;
+
+            if (audio.paused) {
+                audio.play();
+                vinyl.style.animationPlayState = 'running'; // El disco empieza a girar
+            } else {
+                audio.pause();
+                vinyl.style.animationPlayState = 'paused';  // El disco se detiene
+            }
+        });
+
+        // Sincroniza el giro del vinilo si el usuario usa directamente los controles nativos del reproductor
+        audio.addEventListener('play', () => { vinyl.style.animationPlayState = 'running'; });
+        audio.addEventListener('pause', () => { vinyl.style.animationPlayState = 'paused'; });
+    </script>
 
 </body>
 </html>
