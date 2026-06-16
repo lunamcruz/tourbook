@@ -1,10 +1,9 @@
-/<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourbook - Recap de Puro Concierto</title>
-    <!-- Importación de las tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
@@ -13,7 +12,7 @@
         :root {
             --text-white: #FFFFFF;
             --pink-magenta: #C2006B;
-            --overlay-dark: rgba(0, 0, 0, 0.3);
+            --overlay-dark: rgba(0, 0, 0, 0.35);
             --bg-black: #000000;
         }
 
@@ -30,16 +29,16 @@
             overflow-x: hidden;
         }
 
-        /* --- Sección de Portada (Hero) --- */
+        /* --- Portada con mayor margen interno (Textos centrados) --- */
         .hero-section {
             position: relative;
             width: 100%;
             min-height: 100vh;
-            background: linear-gradient(to bottom, var(--overlay-dark), rgba(0,0,0,0.6)), url('louis1.jpg') no-repeat center center/cover;
+            background: linear-gradient(to bottom, var(--overlay-dark), rgba(0,0,0,0.7)), url('louis1.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 2.5rem 2rem 1.5rem 2rem;
+            padding: 3rem 12% 2rem 12%; /* Ajuste aquí: empuja el texto hacia el centro */
             cursor: pointer;
         }
 
@@ -51,7 +50,7 @@
 
         .main-title {
             font-family: 'Cinzel Decorative', serif;
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: 700;
             letter-spacing: 2px;
             line-height: 0.95;
@@ -59,7 +58,7 @@
 
         .subtitle {
             font-family: 'Cinzel Decorative', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             letter-spacing: 1px;
             margin-top: 0.2rem;
@@ -69,41 +68,40 @@
             display: grid;
             grid-template-columns: 1fr;
             width: 100%;
-            margin-top: 1rem;
+            margin-top: 2rem;
             margin-bottom: auto;
             pointer-events: none;
+            gap: 2rem;
         }
 
         .quote-left {
             font-family: 'Alex Brush', cursive;
-            font-size: 3.2rem;
-            line-height: 1.1;
+            font-size: 3rem;
+            line-height: 1.2;
             max-width: 420px;
             letter-spacing: 1px;
-            margin-top: 1.5rem;
         }
 
         .artist-right {
             justify-self: end;
             text-align: right;
             max-width: 400px;
-            margin-top: 3rem;
         }
 
         .artist-name {
             font-family: 'Cinzel Decorative', serif;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 700;
             color: var(--pink-magenta);
             text-transform: uppercase;
-            line-height: 0.9;
+            line-height: 0.95;
             letter-spacing: 1px;
             margin-bottom: 0.3rem;
         }
 
         .artist-subtext {
             font-family: 'Alex Brush', cursive;
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             line-height: 1;
             letter-spacing: 1px;
         }
@@ -112,7 +110,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.75);
             padding: 10px 15px;
             border-radius: 30px;
             backdrop-filter: blur(5px);
@@ -150,13 +148,13 @@
             justify-content: space-between;
             width: 100%;
             margin-top: 2rem;
-            gap: 1rem;
+            gap: 1.5rem;
             pointer-events: none;
         }
 
         .credits-author {
             font-family: 'Alex Brush', cursive;
-            font-size: 3rem;
+            font-size: 2.8rem;
             letter-spacing: 1px;
         }
 
@@ -172,215 +170,4 @@
             display: inline-block;
             background-color: #000;
             height: 100%;
-            margin-right: 2px;
-        }
-        .barcode span:nth-child(odd) { width: 1px; }
-        .barcode span:nth-child(even) { width: 3px; }
-        .barcode span:nth-child(3n) { width: 4px; }
-        .barcode span:nth-child(4n) { width: 2px; }
-        .barcode span:last-child { margin-right: 0; }
-
-        /* --- Nueva Sección: Contenido Inferior (Carrusel y Botón) --- */
-        .content-section {
-            padding: 4rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4rem;
-            background: linear-gradient(to bottom, #000000, #0a0a0c);
-        }
-
-        /* Estructura del Carrusel Infinito Automático */
-        .carousel-container {
-            width: 100%;
-            max-width: 1200px;
-            overflow: hidden;
-            position: relative;
-            padding: 1rem 0;
-        }
-
-        .carousel-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-            animation: scroll 25s linear infinite;
-        }
-
-        .carousel-track:hover {
-            animation-play-state: paused; /* Se pausa al pasar el cursor */
-        }
-
-        .carousel-item {
-            width: 280px;
-            height: 380px;
-            object-fit: cover;
-            border-radius: 4px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .carousel-item:hover {
-            transform: scale(1.03);
-        }
-
-        /* Animación de desplazamiento continuo */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-280px * 4 - 20px * 4)); }
-        }
-
-        /* Botón de Descarga Estilizado */
-        .download-btn {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-white);
-            background: transparent;
-            border: 2px solid var(--text-white);
-            padding: 12px 35px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 15px rgba(194, 0, 107, 0.2);
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .download-btn:hover {
-            background-color: var(--text-white);
-            color: var(--bg-black);
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
-            transform: translateY(-3px);
-        }
-
-        .download-btn:active {
-            transform: translateY(-1px);
-        }
-
-        /* --- Responsividad --- */
-        @media (min-width: 768px) {
-            .hero-section { padding: 3rem 4rem 2rem 4rem; }
-            .main-title { font-size: 7.5rem; }
-            .subtitle { font-size: 2rem; }
-            .content-grid { grid-template-columns: 1fr 1fr; align-items: start; margin-top: 3rem; }
-            .quote-left { font-size: 4.5rem; max-width: 500px; }
-            .artist-right { margin-top: 8rem; }
-            .artist-name { font-size: 4.5rem; }
-            .artist-subtext { font-size: 4.5rem; }
-            footer { flex-direction: row; align-items: flex-end; }
-            .audio-player-container { margin-top: 0; position: relative; bottom: -5px; }
-            .carousel-item { width: 320px; height: 440px; }
-            @keyframes scroll {
-                0% { transform: translateX(0); }
-                100% { transform: translateX(calc(-320px * 4 - 20px * 4)); }
-            }
-        }
-
-        @media (max-width: 480px) {
-            .main-title { font-size: 3.8rem; }
-            .subtitle { font-size: 1.1rem; }
-            .quote-left { font-size: 2.8rem; }
-            .artist-name { font-size: 2.8rem; }
-            .artist-subtext { font-size: 2.8rem; }
-            .audio-player-container { max-width: 100%; }
-            .download-btn { font-size: 1.1rem; padding: 10px 25px; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Sección Superior (Portada / Revista) -->
-    <main class="hero-section" id="bg-container">
-        <header>
-            <h1 class="main-title">Tourbook</h1>
-            <p class="subtitle">Recap de Puro Concierto</p>
-        </header>
-
-        <div class="content-grid">
-            <div class="quote-left">
-                Podría escribir mi autobiografía, pero los conciertos son mejores
-            </div>
-            
-            <div class="artist-right">
-                <h2 class="artist-name">Louis<br>Tomlinson</h2>
-                <p class="artist-subtext">y los mejores fan proyects</p>
-            </div>
-        </div>
-
-        <footer>
-            <div class="audio-player-container">
-                <div class="vinyl-thumb" id="vinyl-id" title="Louis Tomlinson - Faith In The Future Picture Disc"></div>
-                <audio controls id="audio-track">
-                    <source src="./silvertongues.mp3" type="audio/mpeg">
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
-            </div>
-
-            <div class="credits-author">
-                By Luna M Cruz
-            </div>
-
-            <div class="barcode" aria-hidden="true">
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-                <span></span><span></span><span></span><span></span><span></span>
-            </div>
-        </footer>
-    </main>
-
-    <!-- Nueva Sección Inferior (Carrusel automático y Acción) -->
-    <section class="content-section">
-        
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <!-- Bloque original de imágenes -->
-                <img src="along.jpeg" alt="Along" class="carousel-item">
-                <img src="harry.jpg" alt="Harry" class="carousel-item">
-                <img src="louis 2.jpg" alt="Louis 2" class="carousel-item">
-                <img src="olivia.jpg" alt="Olivia" class="carousel-item">
-                
-                <!-- Duplicado idéntico para crear el efecto óptico de ciclo infinito -->
-                <img src="along.jpeg" alt="Along" class="carousel-item">
-                <img src="harry.jpg" alt="Harry" class="carousel-item">
-                <img src="louis 2.jpg" alt="Louis 2" class="carousel-item">
-                <img src="olivia.jpg" alt="Olivia" class="carousel-item">
-            </div>
-        </div>
-
-        <!-- Botón de descarga interactivo (agrega el enlace final en el atributo href si lo requieres) -->
-        <a href="#" class="download-btn">
-            descarga el libro ya
-        </a>
-
-    </section>
-
-    <!-- Scripts de Interacción de Audio -->
-    <script>
-        const background = document.getElementById('bg-container');
-        const audio = document.getElementById('audio-track');
-        const vinyl = document.getElementById('vinyl-id');
-
-        background.addEventListener('click', function(e) {
-            if (e.target.closest('.audio-player-container')) return;
-
-            if (audio.paused) {
-                audio.play();
-                vinyl.style.animationPlayState = 'running';
-            } else {
-                audio.pause();
-                vinyl.style.animationPlayState = 'paused';
-            }
-        });
-
-        audio.addEventListener('play', () => { vinyl.style.animationPlayState = 'running'; });
-        audio.addEventListener('pause', () => { vinyl.style.animationPlayState = 'paused'; });
-    </script>
-
-</body>
-</html>
+            margin-right: 2px
