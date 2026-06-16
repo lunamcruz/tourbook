@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourbook - Recap de Puro Concierto</title>
-    <!-- Importación de tipografías -->
+    <!-- Importación de las tipografías elegantes y cursivas desde Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
@@ -32,6 +32,7 @@
             position: relative;
             width: 100%;
             min-height: 100vh;
+            /* Fondo con ruta relativa exacta a louis1.jpg */
             background: linear-gradient(to bottom, var(--overlay-dark), rgba(0,0,0,0.5)), url('louis1.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -110,7 +111,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- Reproductor de Música (Control Manual) --- */
+        /* --- Reproductor de Música --- */
         .audio-player-container {
             display: flex;
             align-items: center;
@@ -200,7 +201,6 @@
             }
 
             .quote-left {
-                font-family: 'Alex Brush', cursive;
                 font-size: 4.5rem;
                 max-width: 500px;
             }
@@ -252,10 +252,11 @@
         </div>
 
         <footer>
-            <!-- Reproductor configurado exclusivamente con inicio manual -->
+            <!-- Reproductor integrado con ruta relativa exacta y control manual -->
             <div class="audio-player-container">
                 <div class="vinyl-thumb" title="Louis Tomlinson - Faith In The Future Picture Disc"></div>
-                <audio controls src="silvertongues.mp3">
+                <audio controls>
+                    <source src="silvertongues.mp3" type="audio/mpeg">
                     Tu navegador no soporta el elemento de audio.
                 </audio>
             </div>
