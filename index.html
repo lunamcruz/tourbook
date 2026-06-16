@@ -6,7 +6,7 @@
     <title>Tourbook - Recap de Puro Concierto</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -20,13 +20,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Cinzel Decorative', serif !important;
         }
 
         body {
             background-color: var(--bg-black);
             color: var(--text-white);
-            font-family: 'Cinzel Decorative', serif; /* Aplicado globalmente */
-            font-weight: 700;
             overflow-x: hidden;
         }
 
@@ -39,7 +38,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 2.5rem 15% 1.5rem 15%; /* Alineación hacia el centro */
+            padding: 2.5rem 12% 1.5rem 12%;
             cursor: pointer;
         }
 
@@ -51,14 +50,16 @@
 
         .main-title {
             font-size: 5rem;
+            font-weight: 700;
             letter-spacing: 2px;
             line-height: 0.95;
         }
 
         .subtitle {
             font-size: 1.4rem;
+            font-weight: 400;
             letter-spacing: 1px;
-            margin-top: 0.2rem;
+            margin-top: 0.5rem;
         }
 
         .content-grid {
@@ -71,34 +72,36 @@
         }
 
         .quote-left {
-            font-size: 2.5rem; /* Adaptado el tamaño para la nueva tipografía */
-            line-height: 1.2;
+            font-size: 1.6rem; /* Tamaño reducido para mejor balance */
+            font-weight: 400;
+            line-height: 1.4;
             max-width: 450px;
             letter-spacing: 1px;
             margin-top: 1.5rem;
         }
 
         .artist-right {
-            justify-self: center; /* Empujado hacia el centro */
-            text-align: center;   /* Alineación centralizada */
+            justify-self: center;
+            text-align: center;   
             max-width: 400px;
             margin-top: 3rem;
         }
 
         .artist-name {
-            font-size: 2.8rem; /* Reducido un poco de tamaño */
+            font-size: 2.5rem; 
+            font-weight: 700;
             color: var(--pink-magenta);
             text-transform: uppercase;
-            line-height: 0.95;
+            line-height: 1;
             letter-spacing: 1px;
             margin-bottom: 0.5rem;
         }
 
         .artist-subtext {
-            font-size: 1.8rem; /* Reducido un poco de tamaño */
-            line-height: 1.1;
+            font-size: 1.5rem; 
+            font-weight: 400;
+            line-height: 1.2;
             letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
         .audio-player-container {
@@ -148,7 +151,8 @@
         }
 
         .credits-author {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
+            font-weight: 400;
             letter-spacing: 1px;
         }
 
@@ -172,7 +176,7 @@
         .barcode span:nth-child(4n) { width: 2px; }
         .barcode span:last-child { margin-right: 0; }
 
-        /* --- Sección: Contenido Inferior (Carrusel y Botón) --- */
+        /* --- Sección Inferior (Carrusel y Botón) --- */
         .content-section {
             padding: 4rem 2rem;
             display: flex;
@@ -259,6 +263,7 @@
         /* Botón de Descarga */
         .download-btn {
             font-size: 1.5rem;
+            font-weight: 700;
             color: var(--text-white);
             background: transparent;
             border: 2px solid var(--text-white);
@@ -288,10 +293,10 @@
             .main-title { font-size: 7.5rem; }
             .subtitle { font-size: 2rem; }
             .content-grid { grid-template-columns: 1fr 1fr; align-items: start; margin-top: 3rem; }
-            .quote-left { font-size: 3.5rem; max-width: 500px; }
-            .artist-right { margin-top: 8rem; justify-self: center; text-align: center; } /* Modificado para arrimar al centro */
-            .artist-name { font-size: 3.2rem; }
-            .artist-subtext { font-size: 2.2rem; }
+            .quote-left { font-size: 2.2rem; max-width: 500px; } /* Ajustado también en escritorio */
+            .artist-right { margin-top: 8rem; justify-self: center; text-align: center; } 
+            .artist-name { font-size: 3rem; }
+            .artist-subtext { font-size: 1.8rem; }
             footer { flex-direction: row; align-items: flex-end; }
             .audio-player-container { margin-top: 0; position: relative; bottom: -5px; }
             .carousel-item { width: 320px; height: 440px; }
@@ -305,11 +310,11 @@
 
         @media (max-width: 480px) {
             .hero-section { padding: 2.5rem 8% 1.5rem 8%; }
-            .main-title { font-size: 3.8rem; }
-            .subtitle { font-size: 1.1rem; }
-            .quote-left { font-size: 2rem; }
-            .artist-name { font-size: 2.2rem; }
-            .artist-subtext { font-size: 1.4rem; }
+            .main-title { font-size: 3.2rem; }
+            .subtitle { font-size: 1rem; }
+            .quote-left { font-size: 1.3rem; } /* Ajustado en móviles */
+            .artist-name { font-size: 2rem; }
+            .artist-subtext { font-size: 1.2rem; }
             .audio-player-container { max-width: 100%; }
             .download-btn { font-size: 1.1rem; padding: 10px 25px; }
             .nav-arrow { width: 35px; height: 35px; font-size: 1rem; }
@@ -407,7 +412,6 @@
         audio.addEventListener('play', () => { vinyl.style.animationPlayState = 'running'; });
         audio.addEventListener('pause', () => { vinyl.style.animationPlayState = 'paused'; });
 
-        // Lógica de navegación manual para el carrusel
         const track = document.getElementById('track-carousel');
         const nextArrow = document.getElementById('btn-next');
         const prevArrow = document.getElementById('btn-prev');
