@@ -12,7 +12,7 @@
         :root {
             --text-white: #FFFFFF;
             --pink-magenta: #C2006B;
-            --overlay-dark: rgba(0, 0, 0, 0.35);
+            --overlay-dark: rgba(0, 0, 0, 0.4);
             --bg-black: #000000;
         }
 
@@ -29,16 +29,16 @@
             overflow-x: hidden;
         }
 
-        /* --- Portada con mayor margen interno (Textos centrados) --- */
+        /* --- Portada con márgenes internos seguros para centrar textos --- */
         .hero-section {
             position: relative;
             width: 100%;
             min-height: 100vh;
-            background: linear-gradient(to bottom, var(--overlay-dark), rgba(0,0,0,0.7)), url('louis1.jpg') no-repeat center center/cover;
+            background: linear-gradient(to bottom, var(--overlay-dark), rgba(0,0,0,0.75)), url('louis1.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 3rem 12% 2rem 12%; /* Ajuste aquí: empuja el texto hacia el centro */
+            padding: 3rem 10%; 
             cursor: pointer;
         }
 
@@ -80,11 +80,13 @@
             line-height: 1.2;
             max-width: 420px;
             letter-spacing: 1px;
+            justify-self: center;
+            text-align: center;
         }
 
         .artist-right {
-            justify-self: end;
-            text-align: right;
+            justify-self: center;
+            text-align: center;
             max-width: 400px;
         }
 
@@ -110,7 +112,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.8);
             padding: 10px 15px;
             border-radius: 30px;
             backdrop-filter: blur(5px);
@@ -170,4 +172,274 @@
             display: inline-block;
             background-color: #000;
             height: 100%;
-            margin-right: 2px
+            margin-right: 2px;
+        }
+        .barcode span:nth-child(odd) { width: 1px; }
+        .barcode span:nth-child(even) { width: 3px; }
+        .barcode span:nth-child(3n) { width: 4px; }
+        .barcode span:nth-child(4n) { width: 2px; }
+        .barcode span:last-child { margin-right: 0; }
+
+        /* --- Sección Carrusel --- */
+        .content-section {
+            padding: 4rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+            background: linear-gradient(to bottom, #000000, #0a0a0c);
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            width: max-content;
+            animation: scroll 25s linear infinite;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .carousel-track.manual-mode {
+            animation: none !important;
+        }
+
+        .carousel-item {
+            width: 260px;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-260px * 4 - 20px * 4)); }
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: var(--text-white);
+            color: var(--bg-black);
+            border-color: var(--text-white);
+        }
+
+        .prev-btn { left: -25px; }
+        .next-btn { right: -25px; }
+
+        /* Botón de Descarga */
+        .download-btn {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-white);
+            background: transparent;
+            border: 2px solid var(--text-white);
+            padding: 12px 35px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 15px rgba(194, 0, 107, 0.2);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .download-btn:hover {
+            background-color: var(--text-white);
+            color: var(--bg-black);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+        }
+
+        /* --- Responsividad --- */
+        @media (min-width: 768px) {
+            .hero-section { padding: 4rem 10% 3rem 10%; }
+            .main-title { font-size: 7rem; }
+            .subtitle { font-size: 1.8rem; }
+            .content-grid { grid-template-columns: 1fr 1fr; align-items: start; margin-top: 4rem; gap: 4rem; }
+            .quote-left { font-size: 4rem; max-width: 480px; text-align: left; justify-self: start; }
+            .artist-right { margin-top: 6rem; text-align: right; justify-self: end; }
+            .artist-name { font-size: 4.2rem; }
+            .artist-subtext { font-size: 4.2rem; }
+            footer { flex-direction: row; align-items: flex-end; }
+            .audio-player-container { margin-top: 0; position: relative; bottom: -5px; }
+            .carousel-item { width: 300px; height: 420px; }
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(calc(-300px * 4 - 20px * 4)); }
+            }
+            .prev-btn { left: -50px; }
+            .next-btn { right: -50px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section { padding: 2.5rem 5% 1.5rem 5%; }
+            .main-title { font-size: 3.2rem; }
+            .subtitle { font-size: 1rem; }
+            .quote-left { font-size: 2.4rem; }
+            .artist-name { font-size: 2.4rem; }
+            .artist-subtext { font-size: 2.4rem; }
+            .audio-player-container { max-width: 100%; }
+            .nav-btn { width: 35px; height: 35px; font-size: 1rem; }
+            .prev-btn { left: -10px; }
+            .next-btn { right: -10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="hero-section" id="bg-container">
+        <header>
+            <h1 class="main-title">Tourbook</h1>
+            <p class="subtitle">Recap de Puro Concierto</p>
+        </header>
+
+        <div class="content-grid">
+            <div class="quote-left">
+                Podría escribir mi autobiografía, pero los conciertos son mejores
+            </div>
+            
+            <div class="artist-right">
+                <h2 class="artist-name">Louis<br>Tomlinson</h2>
+                <p class="artist-subtext">y los mejores fan proyects</p>
+            </div>
+        </div>
+
+        <footer>
+            <div class="audio-player-container">
+                <div class="vinyl-thumb" id="vinyl-id" title="Louis Tomlinson - Faith In The Future Picture Disc"></div>
+                <audio controls id="audio-track">
+                    <source src="./silvertongues.mp3" type="audio/mpeg">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+
+            <div class="credits-author">
+                By Luna M Cruz
+            </div>
+
+            <div class="barcode" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </footer>
+    </main>
+
+    <section class="content-section">
+        <div class="carousel-wrapper">
+            <button class="nav-btn prev-btn" id="prev-arrow">&#10094;</button>
+            
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track-id">
+                    <img src="along.jpeg" alt="Along" class="carousel-item">
+                    <img src="harry.jpg" alt="Harry" class="carousel-item">
+                    <!-- Corrección: Cambiado 'louis 2.jpg' a 'louis2.jpg' para evitar el error de espacio -->
+                    <img src="louis2.jpg" alt="Louis 2" class="carousel-item">
+                    <img src="olivia.jpg" alt="Olivia" class="carousel-item">
+                    
+                    <img src="along.jpeg" alt="Along" class="carousel-item">
+                    <img src="harry.jpg" alt="Harry" class="carousel-item">
+                    <img src="louis2.jpg" alt="Louis 2" class="carousel-item">
+                    <img src="olivia.jpg" alt="Olivia" class="carousel-item">
+                </div>
+            </div>
+
+            <button class="nav-btn next-btn" id="next-arrow">&#10095;</button>
+        </div>
+
+        <a href="#" class="download-btn">
+            descarga el libro ya
+        </a>
+    </section>
+
+    <script>
+        const background = document.getElementById('bg-container');
+        const audio = document.getElementById('audio-track');
+        const vinyl = document.getElementById('vinyl-id');
+
+        background.addEventListener('click', function(e) {
+            if (e.target.closest('.audio-player-container')) return;
+
+            if (audio.paused) {
+                audio.play();
+                vinyl.style.animationPlayState = 'running';
+            } else {
+                audio.pause();
+                vinyl.style.animationPlayState = 'paused';
+            }
+        });
+
+        audio.addEventListener('play', () => { vinyl.style.animationPlayState = 'running'; });
+        audio.addEventListener('pause', () => { vinyl.style.animationPlayState = 'paused'; });
+
+        const track = document.getElementById('carousel-track-id');
+        const prevBtn = document.getElementById('prev-arrow');
+        const nextBtn = document.getElementById('next-arrow');
+        
+        let currentIndex = 0;
+        const totalItems = 4;
+
+        function getSlideWidth() {
+            const item = document.querySelector('.carousel-item');
+            const style = window.getComputedStyle(item);
+            const margin = 20; 
+            return item.offsetWidth + margin;
+        }
+
+        function moveCarousel(direction) {
+            track.classList.add('manual-mode');
+            const slideWidth = getSlideWidth();
+
+            if (direction === 'next') {
+                currentIndex++;
+                if (currentIndex >= totalItems) currentIndex = 0;
+            } else {
+                currentIndex--;
+                if (currentIndex < 0) currentIndex = totalItems - 1;
+            }
+
+            const amountToMove = -currentIndex * slideWidth;
+            track.style.transform = `translateX(${amountToMove}px)`;
+        }
+
+        nextBtn.addEventListener('click', () => moveCarousel('next'));
+        prevBtn.addEventListener('click', () => moveCarousel('prev'));
+    </script>
+
+</body>
+</html>
