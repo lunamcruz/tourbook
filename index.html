@@ -73,10 +73,10 @@
             pointer-events: none;
         }
 
-        /* Tamaño base idéntico para ambas frases */
+        /* TAMAÑO BASE PARA MÓVIL (1.2rem) */
         .quote-left {
             font-family: 'Cinzel Decorative', serif;
-            font-size: 1.5rem; 
+            font-size: 1.2rem; 
             font-weight: 400;
             line-height: 1.4;
             max-width: 450px;
@@ -104,7 +104,7 @@
 
         .artist-subtext {
             font-family: 'Cinzel Decorative', serif;
-            font-size: 1.5rem; 
+            font-size: 1.2rem; 
             font-weight: 400;
             line-height: 1.2;
             letter-spacing: 1px;
@@ -293,14 +293,14 @@
             transform: translateY(-3px);
         }
 
-        /* --- Responsividad (Cambios aplicados aquí simultáneamente) --- */
+        /* --- RESPONSIVIDAD PARA COMPUTADORAS --- */
         @media (min-width: 768px) {
             .hero-section { padding: 3rem 12% 2rem 12%; }
             .main-title { font-size: 7.5rem; }
             .subtitle { font-size: 2rem; }
             .content-grid { grid-template-columns: 1fr 1fr; align-items: start; margin-top: 3rem; }
             
-            /* Ajuste idéntico en pantallas grandes */
+            /* TAMAÑO EXACTO E IDÉNTICO EN COMPUTADORA (1.8rem) */
             .quote-left { font-size: 1.8rem; max-width: 500px; } 
             .artist-subtext { font-size: 1.8rem; }
 
@@ -317,12 +317,13 @@
             }
         }
 
+        /* --- RESPONSIVIDAD PARA MÓVILES --- */
         @media (max-width: 480px) {
             .hero-section { padding: 2.5rem 8% 1.5rem 8%; }
             .main-title { font-size: 3.2rem; }
             .subtitle { font-size: 1rem; }
             
-            /* Ajuste idéntico en móviles */
+            /* TAMAÑO EXACTO E IDÉNTICO EN CELULARES (1.2rem) */
             .quote-left { font-size: 1.2rem; } 
             .artist-subtext { font-size: 1.2rem; }
 
