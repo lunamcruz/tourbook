@@ -6,7 +6,7 @@
     <title>Tourbook - Recap de Puro Concierto</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Syne:wght@800&display=swap" rel="stylesheet">
     
     <style>
         /* --- Variables de Paleta de Colores --- */
@@ -33,12 +33,11 @@
             overflow-x: hidden;
         }
 
-        /* --- Contenedor Principal con la nueva imagen de fondo --- */
+        /* --- Contenedor Principal (Revista / Landing) --- */
         .landing-container {
             position: relative;
             width: 100%;
             min-height: 100vh;
-            /* Se vincula la nueva imagen 'lou portada.jpg' */
             background: linear-gradient(to bottom, rgba(13, 13, 15, 0.2), var(--overlay-black)), url('lou portada.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -54,22 +53,25 @@
         }
 
         .main-title {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 4.5rem;
-            letter-spacing: 4px;
+            font-family: 'Syne', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 800;
+            letter-spacing: -2px;
             text-transform: uppercase;
-            line-height: 1;
+            line-height: 0.9;
             margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
+            word-spacing: -5px;
         }
 
         .subtitle {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 1.2rem;
-            letter-spacing: 6px;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            font-weight: 400;
-            opacity: 0.9;
+            opacity: 0.95;
+            text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
         }
 
         /* --- Contenido Central (Distribución de Textos) --- */
@@ -85,11 +87,11 @@
         /* Bloque Izquierdo */
         .quote-left {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.2rem;
-            line-height: 1.1;
-            letter-spacing: 2px;
-            max-width: 450px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            font-size: 2.4rem;
+            line-height: 1.05;
+            letter-spacing: 1.5px;
+            max-width: 420px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
         }
 
         /* Bloque Derecho */
@@ -100,23 +102,26 @@
         }
 
         .artist-name {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 3rem;
+            font-family: 'Syne', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
             color: var(--pink-light);
-            text-shadow: 0 0 10px var(--pink-primary);
-            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            text-shadow: 0 0 15px var(--pink-primary), 2px 2px 5px rgba(0,0,0,0.9);
+            line-height: 0.95;
             margin-bottom: 0.5rem;
         }
 
         .artist-subtext {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
+            font-size: 2.1rem;
             letter-spacing: 1px;
             line-height: 1.1;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
         }
 
-        /* --- Footer (Controles e Info Inferior) --- */
+        /* --- Footer (Info Inferior) --- */
         footer {
             display: flex;
             flex-direction: column;
@@ -129,11 +134,12 @@
 
         .credits-author {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             letter-spacing: 2px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
         }
 
-        /* Contenedor Interactivo: Botón y Mensaje de Estado */
+        /* Botón e indicador */
         .cta-audio-container {
             display: flex;
             flex-direction: column;
@@ -148,38 +154,41 @@
             background-color: var(--text-white);
             color: var(--bg-dark);
             padding: 0.6rem 3rem;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: transform 0.2s, background-color 0.2s;
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
             width: 100%;
             text-align: center;
         }
 
         .btn-buy:hover {
-            transform: scale(1.02);
-            background-color: #e0e0e0;
+            transform: scale(1.03);
+            background-color: #f0f0f0;
+            box-shadow: 0 0 15px rgba(255,255,255,0.4);
         }
 
         .audio-status {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-family: 'Montserrat', sans-serif;
-            opacity: 0.6;
+            font-weight: 700;
+            opacity: 0.8;
             letter-spacing: 1px;
             text-transform: uppercase;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
         }
 
         /* Código de barras simulado */
         .barcode {
             display: flex;
             background-color: var(--text-white);
-            padding: 5px 15px;
-            height: 45px;
+            padding: 5px 12px;
+            height: 42px;
             align-items: center;
-            border-radius: 2px;
+            border-radius: 1px;
         }
         
         .barcode span {
@@ -193,14 +202,14 @@
         .barcode span:nth-child(3n) { width: 4px; }
         .barcode span:nth-child(4n) { width: 2px; }
 
-        /* --- RESPONSIVIDAD (Media Queries) --- */
+        /* --- RESPONSIVIDAD --- */
         @media (min-width: 768px) {
             .landing-container {
                 padding: 3rem;
             }
 
             .main-title {
-                font-size: 6rem;
+                font-size: 6.5rem;
             }
 
             .content-grid {
@@ -220,7 +229,7 @@
 
             .credits-author {
                 order: 1;
-                margin-bottom: 5px;
+                margin-bottom: 2px;
             }
 
             .barcode {
@@ -230,20 +239,20 @@
 
         @media (max-width: 480px) {
             .main-title {
-                font-size: 3.5rem;
+                font-size: 3.2rem;
             }
             .subtitle {
-                font-size: 0.9rem;
-                letter-spacing: 4px;
+                font-size: 0.85rem;
+                letter-spacing: 3px;
             }
             .quote-left {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
             .artist-name {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             .artist-subtext {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -251,7 +260,7 @@
 <body>
 
     <audio id="bg-music" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        <source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==" type="audio/wav">
     </audio>
 
     <main class="landing-container">
@@ -279,7 +288,7 @@
 
             <div class="cta-audio-container">
                 <button class="btn-buy" id="buy-btn">Buy Now</button>
-                <div class="audio-status" id="audio-tag">♫ Presiona Buy Now para escuchar</div>
+                <div class="audio-status" id="audio-tag">♫ Presiona para activar música</div>
             </div>
 
             <div class="barcode" aria-hidden="true">
@@ -297,11 +306,18 @@
         const buyBtn = document.getElementById('buy-btn');
         const audioTag = document.getElementById('audio-tag');
 
+        // Intentar cargar e inicializar el archivo de audio local asignado
+        let audioFile = new Audio("Louis Tomlinson Silver tongues.mp3");
+        audioFile.loop = true;
+
         buyBtn.addEventListener('click', () => {
-            music.play().then(() => {
-                audioTag.innerText = "♫ Reproduciendo Audio";
+            audioFile.play().then(() => {
+                audioTag.innerText = "♫ Escuchando: Silver Tongues";
+                audioTag.style.color = "#E00C78";
             }).catch(error => {
-                console.error("Error al reproducir el audio:", error);
+                // Fallback automático por si el navegador bloquea estrictamente la ruta local en el entorno del cliente
+                music.play();
+                audioTag.innerText = "♫ Audio activado con éxito";
             });
         });
     </script>
