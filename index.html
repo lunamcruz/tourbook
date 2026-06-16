@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourbook - Recap de Puro Concierto</title>
-    <!-- Importación de las nuevas tipografías: Cinzel Decorative (Títulos) y Alex Brush (Cursiva manuscrita) -->
+    <!-- Importación de tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@
             padding: 2.5rem 2rem 1.5rem 2rem;
         }
 
-        /* --- Encabezado Principal --- */
+        /* --- Encabezado --- */
         header {
             text-align: center;
             width: 100%;
@@ -74,10 +74,9 @@
             margin-bottom: auto;
         }
 
-        /* Bloque Izquierdo con la nueva fuente Cursiva (Alex Brush) */
         .quote-left {
             font-family: 'Alex Brush', cursive;
-            font-size: 3.2rem; /* Se aumenta el tamaño ya que las fuentes cursivas suelen ser más pequeñas */
+            font-size: 3.2rem;
             line-height: 1.1;
             color: var(--text-white);
             max-width: 420px;
@@ -85,7 +84,6 @@
             margin-top: 1.5rem;
         }
 
-        /* Bloque Derecho */
         .artist-right {
             justify-self: end;
             text-align: right;
@@ -104,13 +102,49 @@
             margin-bottom: 0.3rem;
         }
 
-        /* Subtexto en Cursiva (Alex Brush) */
         .artist-subtext {
             font-family: 'Alex Brush', cursive;
             font-size: 3.5rem;
             color: var(--text-white);
             line-height: 1;
             letter-spacing: 1px;
+        }
+
+        /* --- Reproductor de Música --- */
+        .audio-player-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 15px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 360px;
+            margin-top: 2rem;
+        }
+
+        /* Miniatura del disco giratorio */
+        .vinyl-thumb {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-image: url('https://shopde.louis-tomlinson.com/cdn/shop/files/Louis-Tomlinson_Faith-In-The-Future_Picture-Disc_s519542_o7847358_a604096_v13730669.7c94ad95.png?v=1764158796&width=1080');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            animation: spin 4s linear infinite;
+        }
+
+        audio {
+            height: 32px;
+            width: 100%;
+        }
+
+        /* Animación de rotación continua */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         /* --- Footer --- */
@@ -124,7 +158,6 @@
             gap: 1rem;
         }
 
-        /* Autor en Cursiva (Alex Brush) */
         .credits-author {
             font-family: 'Alex Brush', cursive;
             font-size: 3rem;
@@ -158,13 +191,8 @@
                 padding: 3rem 4rem 2rem 4rem;
             }
 
-            .main-title {
-                font-size: 7.5rem;
-            }
-
-            .subtitle {
-                font-size: 2rem;
-            }
+            .main-title { font-size: 7.5rem; }
+            .subtitle { font-size: 2rem; }
 
             .content-grid {
                 grid-template-columns: 1fr 1fr;
@@ -177,21 +205,19 @@
                 max-width: 500px;
             }
 
-            .artist-right {
-                margin-top: 8rem;
-            }
-
-            .artist-name {
-                font-size: 4.5rem;
-            }
-
-            .artist-subtext {
-                font-size: 4.5rem;
-            }
+            .artist-right { margin-top: 8rem; }
+            .artist-name { font-size: 4.5rem; }
+            .artist-subtext { font-size: 4.5rem; }
 
             footer {
                 flex-direction: row;
                 align-items: flex-end;
+            }
+
+            .audio-player-container {
+                margin-top: 0;
+                position: relative;
+                bottom: -5px;
             }
         }
 
@@ -201,6 +227,7 @@
             .quote-left { font-size: 2.8rem; }
             .artist-name { font-size: 2.8rem; }
             .artist-subtext { font-size: 2.8rem; }
+            .audio-player-container { max-width: 100%; }
         }
     </style>
 </head>
@@ -225,6 +252,14 @@
         </div>
 
         <footer>
+            <!-- Contenedor del Reproductor con Miniatura y Controles -->
+            <div class="audio-player-container">
+                <div class="vinyl-thumb" title="Louis Tomlinson - Faith In The Future Picture Disc"></div>
+                <audio controls src="silvertongues.mp3">
+                    Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+
             <div class="credits-author">
                 By Luna M Cruz
             </div>
