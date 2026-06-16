@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourbook - Recap de Puro Concierto</title>
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel+Decorative:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
         /* --- Variables de Paleta de Colores --- */
@@ -34,12 +33,12 @@
             overflow-x: hidden;
         }
 
-        /* --- Contenedor Principal con Imagen de Fondo --- */
+        /* --- Contenedor Principal con la nueva imagen de fondo --- */
         .landing-container {
             position: relative;
             width: 100%;
             min-height: 100vh;
-            /* Vinculación exclusiva de tu foto de fondo */
+            /* Se vincula la nueva imagen 'lou portada.jpg' */
             background: linear-gradient(to bottom, rgba(13, 13, 15, 0.2), var(--overlay-black)), url('lou portada.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -55,25 +54,22 @@
         }
 
         .main-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 4.2rem;
-            font-weight: 800;
-            letter-spacing: -2px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 4.5rem;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            line-height: 0.9;
+            line-height: 1;
             margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
-            word-spacing: -5px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
         }
 
         .subtitle {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: 4px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            letter-spacing: 6px;
             text-transform: uppercase;
-            opacity: 0.95;
-            text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+            font-weight: 400;
+            opacity: 0.9;
         }
 
         /* --- Contenido Central (Distribución de Textos) --- */
@@ -89,11 +85,11 @@
         /* Bloque Izquierdo */
         .quote-left {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.4rem;
-            line-height: 1.05;
-            letter-spacing: 1.5px;
-            max-width: 420px;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+            font-size: 2.2rem;
+            line-height: 1.1;
+            letter-spacing: 2px;
+            max-width: 450px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
         }
 
         /* Bloque Derecho */
@@ -104,26 +100,23 @@
         }
 
         .artist-name {
-            font-family: 'Syne', sans-serif;
-            font-size: 3.2rem;
-            font-weight: 800;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3rem;
             color: var(--pink-light);
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            text-shadow: 0 0 15px var(--pink-primary), 2px 2px 5px rgba(0,0,0,0.9);
-            line-height: 0.95;
+            text-shadow: 0 0 10px var(--pink-primary);
+            line-height: 1;
             margin-bottom: 0.5rem;
         }
 
         .artist-subtext {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 2.1rem;
+            font-size: 2rem;
             letter-spacing: 1px;
             line-height: 1.1;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
         }
 
-        /* --- Footer (Info Inferior) --- */
+        /* --- Footer (Controles e Info Inferior) --- */
         footer {
             display: flex;
             flex-direction: column;
@@ -136,19 +129,57 @@
 
         .credits-author {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             letter-spacing: 2px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Contenedor Interactivo: Botón y Mensaje de Estado */
+        .cta-audio-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .btn-buy {
+            font-family: 'Bebas Neue', sans-serif;
+            background-color: var(--text-white);
+            color: var(--bg-dark);
+            padding: 0.6rem 3rem;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s, background-color 0.2s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-buy:hover {
+            transform: scale(1.02);
+            background-color: #e0e0e0;
+        }
+
+        .audio-status {
+            font-size: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            opacity: 0.6;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* Código de barras simulado */
         .barcode {
             display: flex;
             background-color: var(--text-white);
-            padding: 5px 12px;
-            height: 42px;
+            padding: 5px 15px;
+            height: 45px;
             align-items: center;
-            border-radius: 1px;
+            border-radius: 2px;
         }
         
         .barcode span {
@@ -162,14 +193,14 @@
         .barcode span:nth-child(3n) { width: 4px; }
         .barcode span:nth-child(4n) { width: 2px; }
 
-        /* --- RESPONSIVIDAD --- */
+        /* --- RESPONSIVIDAD (Media Queries) --- */
         @media (min-width: 768px) {
             .landing-container {
                 padding: 3rem;
             }
 
             .main-title {
-                font-size: 6.5rem;
+                font-size: 6rem;
             }
 
             .content-grid {
@@ -183,47 +214,53 @@
                 align-items: flex-end;
             }
 
+            .cta-audio-container {
+                order: 2;
+            }
+
             .credits-author {
                 order: 1;
-                margin-bottom: 2px;
+                margin-bottom: 5px;
             }
 
             .barcode {
-                order: 2;
+                order: 3;
             }
         }
 
         @media (max-width: 480px) {
             .main-title {
-                font-size: 3.2rem;
+                font-size: 3.5rem;
             }
             .subtitle {
-                font-size: 0.85rem;
-                letter-spacing: 3px;
+                font-size: 0.9rem;
+                letter-spacing: 4px;
             }
             .quote-left {
-                font-size: 1.9rem;
+                font-size: 1.8rem;
             }
             .artist-name {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             .artist-subtext {
-                font-size: 1.6rem;
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
 
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
     <main class="landing-container">
         
-        <!-- Parte Superior: Cabecera Estilo Portada -->
         <header>
             <h1 class="main-title">Tourbook</h1>
             <p class="subtitle">Recap de Puro Concierto</p>
         </header>
 
-        <!-- Parte Central: Textos Flotantes -->
         <div class="content-grid">
             <div class="quote-left">
                 Podría escribir mi autobiografía, pero los conciertos son mejores
@@ -235,10 +272,14 @@
             </div>
         </div>
 
-        <!-- Parte Inferior: Autoría y Código de Barras -->
         <footer>
             <div class="credits-author">
                 By Luna M Cruz
+            </div>
+
+            <div class="cta-audio-container">
+                <button class="btn-buy" id="buy-btn">Buy Now</button>
+                <div class="audio-status" id="audio-tag">♫ Presiona Buy Now para escuchar</div>
             </div>
 
             <div class="barcode" aria-hidden="true">
@@ -250,6 +291,20 @@
         </footer>
 
     </main>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const buyBtn = document.getElementById('buy-btn');
+        const audioTag = document.getElementById('audio-tag');
+
+        buyBtn.addEventListener('click', () => {
+            music.play().then(() => {
+                audioTag.innerText = "♫ Reproduciendo Audio";
+            }).catch(error => {
+                console.error("Error al reproducir el audio:", error);
+            });
+        });
+    </script>
 
 </body>
 </html>
