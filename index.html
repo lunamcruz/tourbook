@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourbook - Recap de Puro Concierto</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&family=Syne:wght@800&display=swap" rel="stylesheet">
@@ -33,11 +34,12 @@
             overflow-x: hidden;
         }
 
-        /* --- Contenedor Principal (Revista / Landing) --- */
+        /* --- Contenedor Principal con Imagen de Fondo --- */
         .landing-container {
             position: relative;
             width: 100%;
             min-height: 100vh;
+            /* Vinculación exclusiva de tu foto de fondo */
             background: linear-gradient(to bottom, rgba(13, 13, 15, 0.2), var(--overlay-black)), url('lou portada.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
@@ -139,48 +141,6 @@
             text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
         }
 
-        /* Botón e indicador */
-        .cta-audio-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        .btn-buy {
-            font-family: 'Bebas Neue', sans-serif;
-            background-color: var(--text-white);
-            color: var(--bg-dark);
-            padding: 0.6rem 3rem;
-            font-size: 1.4rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
-            width: 100%;
-            text-align: center;
-        }
-
-        .btn-buy:hover {
-            transform: scale(1.03);
-            background-color: #f0f0f0;
-            box-shadow: 0 0 15px rgba(255,255,255,0.4);
-        }
-
-        .audio-status {
-            font-size: 0.75rem;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            opacity: 0.8;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-        }
-
         /* Código de barras simulado */
         .barcode {
             display: flex;
@@ -223,17 +183,13 @@
                 align-items: flex-end;
             }
 
-            .cta-audio-container {
-                order: 2;
-            }
-
             .credits-author {
                 order: 1;
                 margin-bottom: 2px;
             }
 
             .barcode {
-                order: 3;
+                order: 2;
             }
         }
 
@@ -259,17 +215,15 @@
 </head>
 <body>
 
-    <audio id="bg-music" loop>
-        <source src="data:audio/wav;base64,UklGRigAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==" type="audio/wav">
-    </audio>
-
     <main class="landing-container">
         
+        <!-- Parte Superior: Cabecera Estilo Portada -->
         <header>
             <h1 class="main-title">Tourbook</h1>
             <p class="subtitle">Recap de Puro Concierto</p>
         </header>
 
+        <!-- Parte Central: Textos Flotantes -->
         <div class="content-grid">
             <div class="quote-left">
                 Podría escribir mi autobiografía, pero los conciertos son mejores
@@ -281,14 +235,10 @@
             </div>
         </div>
 
+        <!-- Parte Inferior: Autoría y Código de Barras -->
         <footer>
             <div class="credits-author">
                 By Luna M Cruz
-            </div>
-
-            <div class="cta-audio-container">
-                <button class="btn-buy" id="buy-btn">Buy Now</button>
-                <div class="audio-status" id="audio-tag">♫ Presiona para activar música</div>
             </div>
 
             <div class="barcode" aria-hidden="true">
@@ -300,27 +250,6 @@
         </footer>
 
     </main>
-
-    <script>
-        const music = document.getElementById('bg-music');
-        const buyBtn = document.getElementById('buy-btn');
-        const audioTag = document.getElementById('audio-tag');
-
-        // Intentar cargar e inicializar el archivo de audio local asignado
-        let audioFile = new Audio("Louis Tomlinson Silver tongues.mp3");
-        audioFile.loop = true;
-
-        buyBtn.addEventListener('click', () => {
-            audioFile.play().then(() => {
-                audioTag.innerText = "♫ Escuchando: Silver Tongues";
-                audioTag.style.color = "#E00C78";
-            }).catch(error => {
-                // Fallback automático por si el navegador bloquea estrictamente la ruta local en el entorno del cliente
-                music.play();
-                audioTag.innerText = "♫ Audio activado con éxito";
-            });
-        });
-    </script>
 
 </body>
 </html>
