@@ -39,7 +39,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 2.5rem 2rem 1.5rem 2rem;
+            padding: 2.5rem 12% 1.5rem 12%; /* Textos empujados hacia el centro para evitar cortes */
             cursor: pointer;
         }
 
@@ -190,10 +190,17 @@
             background: linear-gradient(to bottom, #000000, #0a0a0c);
         }
 
-        /* Estructura del Carrusel Infinito Automático */
-        .carousel-container {
+        /* Envoltorio relativo para contener las flechas de navegación */
+        .carousel-wrapper {
+            position: relative;
             width: 100%;
             max-width: 1200px;
+            display: flex;
+            align-items: center;
+        }
+
+        .carousel-container {
+            width: 100%;
             overflow: hidden;
             position: relative;
             padding: 1rem 0;
@@ -204,10 +211,12 @@
             gap: 20px;
             width: max-content;
             animation: scroll 25s linear infinite;
+            transition: transform 0.5s ease-in-out;
         }
 
-        .carousel-track:hover {
-            animation-play-state: paused; /* Se pausa al pasar el cursor */
+        /* Detiene la animación CSS automática al presionar las flechas */
+        .carousel-track.manual-active {
+            animation: none !important;
         }
 
         .carousel-item {
@@ -224,11 +233,38 @@
             transform: scale(1.03);
         }
 
-        /* Animación de desplazamiento continuo */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(calc(-280px * 4 - 20px * 4)); }
         }
+
+        /* Estilos de las flechas manuales */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: var(--text-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-arrow:hover {
+            background: var(--text-white);
+            color: var(--bg-black);
+        }
+
+        .left-arrow { left: -15px; }
+        .right-arrow { right: -15px; }
 
         /* Botón de Descarga Estilizado */
         .download-btn {
@@ -264,7 +300,7 @@
 
         /* --- Responsividad --- */
         @media (min-width: 768px) {
-            .hero-section { padding: 3rem 4rem 2rem 4rem; }
+            .hero-section { padding: 3rem 15% 2rem 15%; } /* Mayor separación en ordenadores */
             .main-title { font-size: 7.5rem; }
             .subtitle { font-size: 2rem; }
             .content-grid { grid-template-columns: 1fr 1fr; align-items: start; margin-top: 3rem; }
@@ -275,6 +311,8 @@
             footer { flex-direction: row; align-items: flex-end; }
             .audio-player-container { margin-top: 0; position: relative; bottom: -5px; }
             .carousel-item { width: 320px; height: 440px; }
+            .left-arrow { left: -50px; }
+            .right-arrow { right: -50px; }
             @keyframes scroll {
                 0% { transform: translateX(0); }
                 100% { transform: translateX(calc(-320px * 4 - 20px * 4)); }
@@ -282,6 +320,7 @@
         }
 
         @media (max-width: 480px) {
+            .hero-section { padding: 2.5rem 5% 1.5rem 5%; }
             .main-title { font-size: 3.8rem; }
             .subtitle { font-size: 1.1rem; }
             .quote-left { font-size: 2.8rem; }
@@ -289,6 +328,9 @@
             .artist-subtext { font-size: 2.8rem; }
             .audio-player-container { max-width: 100%; }
             .download-btn { font-size: 1.1rem; padding: 10px 25px; }
+            .nav-arrow { width: 35px; height: 35px; font-size: 1rem; }
+            .left-arrow { left: 5px; }
+            .right-arrow { right: 5px; }
         }
     </style>
 </head>
@@ -337,30 +379,37 @@
     <!-- Nueva Sección Inferior (Carrusel automático y Acción) -->
     <section class="content-section">
         
-        <div class="carousel-container">
-            <div class="carousel-track">
-                <!-- Bloque original de imágenes -->
-                <img src="along.jpeg" alt="Along" class="carousel-item">
-                <img src="harry.jpg" alt="Harry" class="carousel-item">
-                <img src="louis 2.jpg" alt="Louis 2" class="carousel-item">
-                <img src="olivia.jpg" alt="Olivia" class="carousel-item">
-                
-                <!-- Duplicado idéntico para crear el efecto óptico de ciclo infinito -->
-                <img src="along.jpeg" alt="Along" class="carousel-item">
-                <img src="harry.jpg" alt="Harry" class="carousel-item">
-                <img src="louis 2.jpg" alt="Louis 2" class="carousel-item">
-                <img src="olivia.jpg" alt="Olivia" class="carousel-item">
+        <div class="carousel-wrapper">
+            <!-- Flechas direccionales -->
+            <button class="nav-arrow left-arrow" id="btn-prev">&#10094;</button>
+
+            <div class="carousel-container">
+                <div class="carousel-track" id="track-carousel">
+                    <!-- Bloque original de imágenes -->
+                    <img src="along.jpeg" alt="Along" class="carousel-item">
+                    <img src="harry.jpg" alt="Harry" class="carousel-item">
+                    <img src="louis 2.jpg" alt="Louis 2" class="carousel-item">
+                    <img src="olivia.jpg" alt="Olivia" class="carousel-item">
+                    
+                    <!-- Duplicado idéntico para crear el efecto óptico de ciclo infinito -->
+                    <img src="along.jpeg" alt="Along" class="carousel-item">
+                    <img src="harry.jpg" alt="Harry" class="carousel-item">
+                    <img src="louis 2.jpg" alt="Louis 2" class="carousel-item">
+                    <img src="olivia.jpg" alt="Olivia" class="carousel-item">
+                </div>
             </div>
+
+            <button class="nav-arrow right-arrow" id="btn-next">&#10095;</button>
         </div>
 
-        <!-- Botón de descarga interactivo (agrega el enlace final en el atributo href si lo requieres) -->
+        <!-- Botón de descarga interactivo -->
         <a href="#" class="download-btn">
             descarga el libro ya
         </a>
 
     </section>
 
-    <!-- Scripts de Interacción de Audio -->
+    <!-- Scripts de Interacción de Audio y Carrusel -->
     <script>
         const background = document.getElementById('bg-container');
         const audio = document.getElementById('audio-track');
@@ -380,6 +429,33 @@
 
         audio.addEventListener('play', () => { vinyl.style.animationPlayState = 'running'; });
         audio.addEventListener('pause', () => { vinyl.style.animationPlayState = 'paused'; });
+
+        // Lógica de navegación manual para el carrusel
+        const track = document.getElementById('track-carousel');
+        const nextArrow = document.getElementById('btn-next');
+        const prevArrow = document.getElementById('btn-prev');
+        
+        let positionIndex = 0;
+        const totalUniqueImages = 4;
+
+        function moveManual(direction) {
+            track.classList.add('manual-active');
+            const item = document.querySelector('.carousel-item');
+            const itemWidth = item.offsetWidth + 20; // Ancho de imagen + gap
+
+            if (direction === 'next') {
+                positionIndex++;
+                if (positionIndex >= totalUniqueImages) positionIndex = 0;
+            } else {
+                positionIndex--;
+                if (positionIndex < 0) positionIndex = totalUniqueImages - 1;
+            }
+
+            track.style.transform = `translateX(${-positionIndex * itemWidth}px)`;
+        }
+
+        nextArrow.addEventListener('click', () => moveManual('next'));
+        prevArrow.addEventListener('click', () => moveManual('prev'));
     </script>
 
 </body>
