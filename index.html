@@ -33,12 +33,13 @@
             overflow-x: hidden;
         }
 
-        /* --- Contenedor Principal (Hero / Landing) --- */
+        /* --- Contenedor Principal con la nueva imagen de fondo --- */
         .landing-container {
             position: relative;
             width: 100%;
             min-height: 100vh;
-            background: linear-gradient(to bottom, rgba(13, 13, 15, 0.3), var(--overlay-black)), url('lou.jpg') no-repeat center center/cover;
+            /* Se vincula la nueva imagen 'lou portada.jpg' */
+            background: linear-gradient(to bottom, rgba(13, 13, 15, 0.2), var(--overlay-black)), url('lou portada.jpg') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -132,14 +133,14 @@
             letter-spacing: 2px;
         }
 
-        /* Contenedor Interactivo: Botón y Audio */
+        /* Contenedor Interactivo: Botón y Mensaje de Estado */
         .cta-audio-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
             width: 100%;
-            max-width: 400px;
+            max-width: 300px;
         }
 
         .btn-buy {
@@ -163,12 +164,12 @@
             background-color: #e0e0e0;
         }
 
-        /* Estilo personalizado básico para el reproductor nativo */
-        audio {
-            width: 100%;
-            height: 32px;
-            border-radius: 50px;
-            background-color: rgba(255, 255, 255, 0.1);
+        .audio-status {
+            font-size: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            opacity: 0.6;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         /* Código de barras simulado */
@@ -215,7 +216,6 @@
 
             .cta-audio-container {
                 order: 2;
-                max-width: 300px;
             }
 
             .credits-author {
@@ -250,6 +250,10 @@
 </head>
 <body>
 
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
     <main class="landing-container">
         
         <header>
@@ -274,11 +278,8 @@
             </div>
 
             <div class="cta-audio-container">
-                <button class="btn-buy">Buy Now</button>
-                <audio controls>
-                    <source src="Louis Tomlinson Silver tongues.mp3" type="audio/mpeg">
-                    Tu navegador no soporta el elemento de audio.
-                </audio>
+                <button class="btn-buy" id="buy-btn">Buy Now</button>
+                <div class="audio-status" id="audio-tag">♫ Presiona Buy Now para escuchar</div>
             </div>
 
             <div class="barcode" aria-hidden="true">
@@ -290,6 +291,20 @@
         </footer>
 
     </main>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const buyBtn = document.getElementById('buy-btn');
+        const audioTag = document.getElementById('audio-tag');
+
+        buyBtn.addEventListener('click', () => {
+            music.play().then(() => {
+                audioTag.innerText = "♫ Reproduciendo Audio";
+            }).catch(error => {
+                console.error("Error al reproducir el audio:", error);
+            });
+        });
+    </script>
 
 </body>
 </html>
